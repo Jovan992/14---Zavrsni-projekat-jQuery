@@ -1,0 +1,91 @@
+#courseImgDiv {
+    height: 420px;
+    background-image: url(img/courses-cover.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+body {
+    background-color: #4c8a95;
+}
+
+#dataTableDiv,
+#tabela1 button,
+#tabela2 button,
+#tabela1,
+#tabela2 {
+    font-size: 12px;
+}
+
+#tabela1,
+#tabela2 {
+    border-bottom-color: #4c8a95;
+}
+
+
+.detalji:hover,
+.brisanje:hover,
+.izmena:hover,
+.rezervacija:hover {
+    background-color: green !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+.detalji:focus,
+.brisanje:focus,
+.izmena:focus,
+.rezervacija:focus {
+    box-shadow: none !important;
+}
+
+#showRes:hover,
+#showRes:focus {
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+}
+
+.btn-close {
+    float: right;
+}
+
+.modal-img {
+    width: 400px;
+}
+
+#modal-cont1 {
+    box-sizing: content-box;
+    width: 550px;
+}
+
+#modal-text,
+#about-text {
+    font-size: 12px;
+}
+
+.maliX {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+form label {
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+#totalSum
+ {
+    display: inline !important;
+    margin-bottom: 0;
+}
+
+#totalDiv {
+    font-size: 24px;
+    font-weight: bold;
+}
+

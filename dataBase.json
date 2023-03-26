@@ -1,0 +1,75 @@
+{
+  "kursevi": [
+    {
+      "id": 0,
+      "course": "Osnove programiranja",
+      "startingDate": "01.04.2022",
+      "duration": 20,
+      "price": "250"
+    },
+    {
+      "id": 1,
+      "course": "Napredno programiranje",
+      "startingDate": "01.04.2022",
+      "duration": 20,
+      "price": "250"
+    },
+    {
+      "id": 2,
+      "course": "Web programiranje - Backend",
+      "startingDate": "01.05.2022",
+      "duration": 30,
+      "price": "350"
+    },
+    {
+      "id": 3,
+      "course": "Web programiranje - Frontend",
+      "startingDate": "01.05.2022",
+      "duration": 30,
+      "price": "350"
+    },
+    {
+      "id": 4,
+      "course": "Manuelno testiranje softvera",
+      "startingDate": "15.04.2022",
+      "duration": "",
+      "price": "250"
+    },
+    {
+      "id": 5,
+      "course": "Automatsko testiranje softvera",
+      "startingDate": "15.04.2022",
+      "duration": "",
+      "price": "250"
+    }
+  ],
+  "rezervacije": [
+    {
+      "name": "Jovan",
+      "surname": "Ranisavljev",
+      "email": "ranisavljev.j@hotmail.com",
+      "course": "Web programiranje - Frontend",
+      "price": "350",
+      "note": "test note 1",
+      "id": 1
+    },
+    {
+      "name": "Jovan",
+      "surname": "Ranisavljev",
+      "email": "ranisavljev.j@hotmail.com",
+      "course": "Napredno programiranje",
+      "price": "250",
+      "note": "kolona b2 dalje",
+      "id": 2
+    },
+    {
+      "name": "Jovan",
+      "surname": "Ranisavljev",
+      "email": "ranisavljev.j@hotmail.com",
+      "course": "Web programiranje - Frontend",
+      "price": "350",
+      "note": "test note 2",
+      "id": 3
+    }
+  ]
+}

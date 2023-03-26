@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="coursesStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+
+    <title>Predavanje 14 - Završni projekat jQuery</title>
+</head>
+
+<body>
+
+    <nav id="header" class="navbar navbar-dark navbar-expand-lg sticky-top p-2 justify-content-center">
+        <div id="brand" class="container">
+            <a id="brand-text" class="navbar-brand text-white fw-bold" href="index.html">JOVAN RANISAVLJEV</a>
+            <button id="menu-button" class="navbar-toggler btn-success text-white p-2 " type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                aria-expanded="false" aria-label="Toggle navigation">
+
+                <div id="menu-icon">
+                    <p style="display: inline; vertical-align: middle;">MENU</p>
+                    <span class="navbar-toggler-icon "></span>
+                </div>
+            </button>
+        </div>
+
+        <div class="nav-text-group container">
+            <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                <ul class="navbar-nav fw-bold ">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link text-white py-3 px-0 px-lg-3 rounded"
+                            href="index.html#portfolio">PORTFOLIO</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link text-white py-3 px-0 px-lg-3 rounded"
+                            href="index.html#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link text-white py-3 px-0 px-lg-3 rounded"
+                            href="index.html#contact">CONTACT</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link text-white py-3 px-0 px-lg-3 rounded"
+                            href="survey.html">SURVEY</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link text-white py-3 px-0 px-lg-3 rounded"
+                            href="courses.html">COURSES</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="courseImgDiv" class="container-fluid d-flex justify-content-center align-items-center text-center">
+        <h2>COURSES</h2>
+    </div>
+
+    <div id="dataTableDiv" class="m-4">
+        <div id="tabela1Div">
+            <table id="tabela1" class="table table-striped">
+                <thead>
+                    <th>Course</th>
+                    <th>Starting date</th>
+                    <th>Duration</th>
+                    <th>Price</th>
+                    <th>Details</th>
+                    <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="tabela2Div">
+            <table id="tabela2" class="table table-light table-striped">
+                <thead>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Price</th>
+                    <th>Note</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="totalDiv" class="d-flex justify-content-end">
+                <p id="totalSum"></p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button id="showRes" type="button" class="btn btn-outline-primary text-white px-5 my-3">View
+                Reservations</button>
+        </div>
+    </div>
+
+    <div id="bottom-cont" class="container-fluid d-flex text-white text-center justify-content-center ">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-lg-4 py-4">
+                    <p class="fw-bold">LOCATION</p>
+                    <span>SMARTINIT Novi Sad<br>Serbia</span>
+                </div>
+                <div class="col-lg-4 py-4 text-center">
+                    <p class="fw-bold">AROUND THE WEB</p>
+                    <div class="footer-icon">
+                        <i class="fa fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div class="footer-icon text-center">
+                        <i class="fa fa-brands fa-twitter "></i>
+                    </div>
+                    <div class="footer-icon text-center">
+                        <i class="fa fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <div class="footer-icon text-center">
+                        <i class="fa fa-brands fa-dribbble"></i>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 py-4">
+                    <p class="fw-bold ">ABOUT SMARTINIT</p>
+                    <span>PanonIT Code Academy -> <a href="https://panonit.com/news/panonit-code-academy">Start
+                            Course</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-cont" class="container-fluid text-center text-white p-3">
+        <span class="">Copyright &#169; Jovan Ranisavljev 2023</span>
+    </div>
+
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true"
+        data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div id="modal-cont1"
+                        class="container d-block justify-content-center justify-items-center text-center mb-2">
+                        <h2 id="modalNaslov" class="pt-4 fs-1 text-secondary"></h2>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="bg-dark rounded mx-2" style="width: 80px; height:3px"></div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" color="dark-grey"
+                                fill="currentColor" class="bi bi-star-fill px-1" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                            <div class="bg-dark rounded mx-2" style="width: 80px; height:3px"></div>
+                        </div>
+
+                        <img class="modal-img rounded-3 pb-4" src="img/kurs-osnove-programiranja.jpg" alt="">
+                        <p id="modal-text"></p>
+                        <p id="priceText"></p>
+
+                        <button type="button" class="btn btn-success py-0 px-3 mt-2" data-bs-dismiss="modal"><span
+                                class="fw-bold fs-5" aria-hidden="true">
+                                <i class="fa-solid fa-xmark maliX"></i>
+                            </span> <span>Close Window</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalUnos" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modalUnosNaslov" class="modal-title fw-bold"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="forma" role="form">
+                        <div class="form-group">
+                            <label for="kurs">Selected course:</label>
+                            <input id="course" type="text" name="kurs" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price:</label>
+                            <input id="price" type="text" name="price" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input id="name" type="text" name="name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Surname:</label>
+                            <input id="surname" type="text" name="surname" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="komentar">Note:</label>
+                            <textarea id="note" name="komentar" class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary mt-2 me-2" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success mt-2">Save Reservation</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
+    <script>
+        $("document").ready(function () {
+            $("#tabela1Div").show();
+            $("#tabela2Div").hide();
+
+            getDataCourses();
+
+            $(document).on('click', '#showRes', function () {
+                if ($("#showRes").text() == "Back to Courses") {
+                    $("#tabela1Div").show();
+                    $("#tabela2Div").hide();
+                    $("#showRes").text("View Reservations");
+                    $("#tabela1 tbody").empty();
+                    getDataCourses();
+                }
+                else {
+                    $("#tabela1Div").hide();
+                    $("#tabela2Div").show();
+                    $("#showRes").text("Back to Courses");
+                    $("#tabela2 tbody").empty();
+                    getDataReservations();
+                }
+            });
+
+            $("#tabela1 tbody").on('click', 'button', function () {
+                var btnThis = $(this);
+                let mid = btnThis.attr("id").split("_")[1];
+                var tr = this.parentNode.parentNode;
+
+                if ($(this).hasClass("detalji")) {
+
+                    switch (mid) {
+                        case "0": {
+                            $("#modalNaslov").text("OSNOVE PROGRAMIRANJA");
+                            $("#modal-text").text("Ukoliko i Vi želite karijeru u IT sektoru a pitate se odakle uopšte početi, kako je najlakše naučiti programiranje i da li je teško savladati programiranje, ukoliko želite da načinite prvi korak i uđete u svet informacionih tehnologija, SmartInIT kursevi programiranja su pravi izbor za Vas");
+                            $("#priceText").text(tr.cells[3].childNodes[0].data.toString() + " $");
+                        }
+                            break;
+                        case "1": {
+                            $("#modalNaslov").text("NAPREDNO PROGRAMIRANJE");
+                            $("#modal-text").text("SmartInIT kurs naprednog programiranja namenjen je osobama koje su se već susretale sa programiranjem, poznaju osnove programiranja i koje žele da napreduju učeći objektno orijentisano programiranje.");
+                            $("#priceText").text(tr.cells[3].childNodes[0].data.toString() + " $");
+                        }
+                            break;
+                        case "2": {
+                            $("#modalNaslov").text("Web programiranje - Backend");
+                            $("#modal-text").text("Kurs je namenjen svima koji žele da se upoznaju sa najnovijim tehnologijama koji se danas korise za izradu veb sajta, a posebno onima koji vole da znaju kako program funkcioniše “ispod haube”, na backend delu veb sajta. Kurs mogu pohađati svi koji imaju dobro poznavanje osnova programiranja, sistemskog programiranja i OOP koncepata, kao i za one koje se već bave veb programiranjem i žele da prošire svoje znanje upoznajući se sa ASP.NET MVC tehnologijom, jednom od najzastupljenihjih tehnologija u svetu.");
+                            $("#priceText").text(tr.cells[3].childNodes[0].data.toString() + " $");
+
+                        }
+                            break;
+                        case "3": {
+                            $("#modalNaslov").text("Web programiranje - Frontend");
+                            $("#modal-text").text("Kurs frontend web programiranja je namenjen svima koji se žele baviti, ali i onima koji se već bave web programiranjem i žele da prošire svoje znanje i savladaju izradu savremenih web aplikacija koristeći najnovije tehnologije. Ovaj kurs je posebno namenjen onima koji imaju “oko za detalje” i koji vole da posvete posebnu pažnju dizajnu i funkcionalnosti klijentskog dela aplikacije.");
+                            $("#priceText").text(tr.cells[3].childNodes[0].data.toString() + " $");
+                            alert
+                        }
+                            break;
+                        case "4": {
+                            $("#modalNaslov").text("Manuelno testiranje softvera");
+                            $("#modal-text").text("Kurs Manuelno testiranje softvera je namenjen svima koji žele da se bave manuelnim ili automatskim testiranjem Web aplikacija ili Desktop aplikacija. Kurs je prilagođen početnicima u oblasti manuelnog testiranja softvera i predstavlja odličan početak za one koji žele da se preusmere i oprobaju kao pronalazači bug-ova. Drugim rečima, ovo je kurs koji je namenjen svima koji ne vole kada neki program “baguje” i imaju želju to da promene. Naime, zadatak QA testera je upravo to – da nađe greške i disfunkcionalnosti u aplikaciji i na taj način unapredi njene performanse.");
+                            $("#priceText").text(tr.cells[3].childNodes[0].data.toString() + " $");
+                        }
+                            break;
+                        case "5": {
+                            $("#modalNaslov").text("Automatsko testiranje softvera");
+                            $("#modal-text").text("Kurs Automatsko testiranje softvera je namenjen polaznicima koji žele da steknu teorijska i praktična znanja iz oblasti automatskog testiranja Web ili Desktop aplikacija. Kurs je koncipiran tako da ga mogu pratiti kako početnici u oblasti testiranja softvera, tako i oni koji već imaju predznanje iz ove oblasti, kao na primer polaznici koji su završili naš kurs Manuelno testiranje softvera.");
+                            $("#priceText").text(tr.cells[3].childNodes[0].data.toString() + " $");
+                        }
+                            break;
+                    }
+
+                    $("#modal1").modal('toggle');
+                }
+
+                else if ($(this).hasClass("rezervacija")) {
+                    $("#modalUnosNaslov").text("Make Reservation")
+
+                    $("#modalUnos").modal('toggle');
+
+                    var btnThis = $(this);
+                    var tr = this.parentNode.parentNode;
+
+                    $("#forma").trigger('reset');
+                    $("#course").val(tr.cells[0].childNodes[0].data);
+                    $("#price").val(tr.cells[3].childNodes[0].data);
+
+                    $("#forma").validate({
+                        rules: {
+                            name: {
+                                required: true,
+                                minlength: 3
+                            },
+                            surname: {
+                                required: true,
+                                minlength: 3
+                            },
+                            email: "required",
+                            note: {
+                                minlength: 13,
+                            }
+                        },
+                        messages: {
+                            name: {
+                                required: "Unesite vase ime",
+                                minlength: "Ime mora imati bar 3 karaktera"
+                            },
+                            surname: {
+                                required: "Unesite vase prezime",
+                                minlength: "Prezime mora imati bar 3 karaktera"
+                            },
+                            email: "Unesite validan email",
+                            note: {
+                                minlength: "Unesite poruku od barem 13 karaktera"
+                            }
+                        },
+                        submitHandler: function () {
+                            var coursef = $("#course").val();
+                            var pricef = $("#price").val();
+                            var namef = $("#name").val();
+                            var surnamef = $("#surname").val();
+                            var emailf = $("#email").val();
+                            var notef = $("#note").val();
+                            var rezervacija = {
+                                name: namef, surname: surnamef, email:
+                                    emailf, course: coursef, price: pricef, note: notef
+                            };
+
+                            $.ajax({
+                                url: "http://localhost:3000/rezervacije",
+                                type: "POST",
+                                data: rezervacija,
+                                success: (podatak) => {
+                                    $("#forma").trigger('reset');
+                                    $("#modalUnos").modal('toggle');
+
+                                    $("#tabela2 tbody").append('<tr>' +
+                                        '<td>' + podatak.name + '</td>' +
+                                        '<td>' + podatak.surname + '</td>' +
+                                        '<td>' + podatak.email + '</td>' +
+                                        '<td>' + podatak.course + '</td>' +
+                                        '<td>' + podatak.price + '</td>' +
+                                        '<td>' + podatak.note + '</td>' +
+                                        '<td><button id="edit_' + podatak.id + '"class="btn btn-outline-primary izmena">Change reservation</button></td>' +
+                                        '<td><button id="delete_' + podatak.id + '" class="btn btn-outline-primary brisanje">Delete Reservation</button></td>' +
+                                        '</tr>');
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+
+            $("#tabela2 tbody").on('click', 'button', function () {
+                if ($(this).hasClass("izmena")) {
+                    $("#modalUnos").modal('toggle');
+                    $("#modalUnosNaslov").text("Change Reservation")
+
+                    var btnThis = $(this);
+                    var tr = this.parentNode.parentNode;
+                    console.log(btnThis);
+                    debugger;
+
+                    $("#name").val(tr.cells[0].childNodes[0].data);
+                    $("#surname").val(tr.cells[1].childNodes[0].data);
+                    $("#email").val(tr.cells[2].childNodes[0].data);
+                    $("#course").val(tr.cells[3].childNodes[0].data);
+                    $("#price").val(tr.cells[4].childNodes[0].data);
+                    $("#note").val(tr.cells[5].childNodes[0].data);
+
+                    $("#forma").validate({
+                        rules: {
+                            name: {
+                                required: true,
+                                minlength: 3
+                            },
+                            surname: {
+                                required: true,
+                                minlength: 3
+                            },
+                            email: "required",
+                            note: {
+                                minlength: 13,
+                                required: true,
+                            }
+                        },
+                        messages: {
+                            name: {
+                                required: "Unesite vase ime",
+                                minlength: "Ime mora imati bar 3 karaktera"
+                            },
+                            surname: {
+                                required: "Unesite vase prezime",
+                                minlength: "Prezime mora imati bar 3 karaktera"
+                            },
+                            email: "Unesite validan email",
+                            note: {
+                                required: "Unesite poruku",
+                                minlength: "Unesite poruku od barem 13 karaktera"
+                            }
+                        },
+                        submitHandler: function () {
+                            var namef = $("#name").val();
+                            var surnamef = $("#surname").val();
+                            var emailf = $("#email").val();
+                            var coursef = $("#course").val();
+                            var pricef = $("#price").val();
+                            var notef = $("#note").val();
+                            var rezervacija = {
+                                name: namef, surname: surnamef, email:
+                                    emailf, course: coursef, price: pricef, note: notef
+                            };
+                            $.ajax({
+                                url: "http://localhost:3000/rezervacije/" + btnThis.attr("id").split("_")[1],
+                                type: "PUT",
+                                data: rezervacija,
+                                success: (podatak) => {
+                                    $("#forma").trigger('reset');
+                                    $("#modalUnos").modal('toggle');
+                                    $("#tabela2 tbody").empty();
+                                    getDataReservations();
+                                }
+                            })
+                        }
+                    });
+                }
+
+                else if ($(this).hasClass("brisanje")) {
+                    let id = $(this).attr("id").split("_")[1];
+                    $.ajax({
+                        url: "http://localhost:3000/rezervacije/" + id,
+                        type: 'DELETE',
+                        dataType: 'json',
+                        success: () => {
+                            alert("Obrisano");
+                            $(this).parent().parent().remove();
+                            $("#tabela2 tbody").empty();
+                            getDataReservations();
+                        },
+                        error: () => alert("Neuspelo brisanje")
+                    });
+                }
+            });
+        });
+        function getDataCourses() {
+            var zahtev = $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/kursevi"
+            });
+
+            zahtev.done((data) => {
+                $.each(data, (i, podatak) => {
+                    $("#tabela1 tbody").append('<tr>' +
+                        '<td>' + podatak.course + '</td>' +
+                        '<td>' + podatak.startingDate + '</td>' +
+                        '<td>' + podatak.duration + '</td>' +
+                        '<td>' + podatak.price + '</td>' +
+                        '<td><button id="view_' + podatak.id + '" class="btn btn-outline-primary text-dark detalji px-5" >View Details</button></td>' +
+                        '<td><button id="delete_' + podatak.id + '" class="btn btn-outline-primary text-dark rezervacija px-3" >Make reservation</button></td>' +
+                        '</tr>');
+                });
+
+                $("#tabela1").dataTable();
+
+            });
+
+            zahtev.fail((err) => {
+                alert(err.statusText);
+            })
+        }
+
+        function getDataReservations() {
+            var totalSum = 0;
+
+            var zahtev = $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/rezervacije"
+            });
+
+            zahtev.done((data) => {
+                $.each(data, (i, podatak) => {
+                    $("#tabela2 tbody").append('<tr>' +
+                        '<td>' + podatak.name + '</td>' +
+                        '<td>' + podatak.surname + '</td>' +
+                        '<td>' + podatak.email + '</td>' +
+                        '<td>' + podatak.course + '</td>' +
+                        '<td>' + podatak.price + '</td>' +
+                        '<td>' + podatak.note + '</td>' +
+                        '<td><button id="edit_' + podatak.id + '" class="btn btn-outline-primary text-dark izmena">Change reservation</button></td>' +
+                        '<td><button id="delete_' + podatak.id + '" class="btn btn-outline-primary text-dark brisanje">Delete Reservation</button></td>' +
+                        '</tr>');
+
+                    totalSum += parseFloat(podatak.price);
+
+                });
+                $("#totalSum").text("TOTAL: " + totalSum + "$");
+            });
+            zahtev.fail((err) => {
+                alert(err.statusText);
+            })
+        }
+    </script>
+</body>
+
+</html>
